@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int edad;
+    
+
+    cout << "introducir tu edad: ";
+    cin >> edad;
+
+    if (cin.fail()) {
+        
+        cout << "error al ingresar la edad, vuelve a intentarlo." << endl;
+    } else {
+        if (edad < 0) {
+            
+            cout << "La edad no puede ser negativa." << endl;
+        } else {
+            if (edad >= 18) {
+                
+                cout << "eres mayor de edad." << endl;
+            } else {
+                
+                cout << "eres menor de edad." << endl;
+            }
+        }
+    }
+
+    return 0;
+}
