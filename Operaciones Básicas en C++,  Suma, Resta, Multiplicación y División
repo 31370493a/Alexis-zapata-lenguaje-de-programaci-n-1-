@@ -1,0 +1,40 @@
+/******************************************************************************
+autor: Alexis Zapata Barbis
+Actividad #2: Crear una aplicación que sume, reste, multiplique y divida dos 
+valores enteros o decimales.
+Fecha: 20/04/25
+*******************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    float numero1, numero2;
+
+    cout << "Introduce el primer numero: ";
+    cin >> numero1;
+    
+    cout << "Introduce el segundo numero: ";
+    cin >> numero2;
+    
+    float suma = numero1 + numero2;
+    float resta = numero1 - numero2;
+    float multiplicación = numero1 * numero2;
+    float división = numero1 / numero2;
+    
+    
+    if (numero2 != 0) {
+        división = numero1 / numero2;
+    } else {
+        división = 0; 
+        cout << "error: no se puede dividir entre cero: " << endl;
+    }
+    
+    cout << "la suma es: " << suma << endl;
+    cout << "la resta es: " << resta << endl;
+    cout << "la multiplicación es: " << multiplicación << endl;
+    cout << "la división es: " << división << endl;
+    
+    return 0;
+   
+}
