@@ -1,0 +1,51 @@
+/******************************************************************************
+
+autor: Alexis Zapata Barbis
+Actividad #3: En el programa C++ se realiza el calculo del rfc con las reglas del sat
+Fecha: 21/04/25
+
+*******************************************************************************/
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Con esta  funcion podemos obtener la primera vocal interna del apellido paterno
+char obtenerPrimeraVocalInterna(string apellidoPaterno) {
+    for (int i = 1; i < apellidoPaterno.length(); i++) {
+        char c = apellidoPaterno[i];
+        if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+            return c;
+        }
+    }
+    return 'X'; // Si no encuentra vocal
+}
+
+// Función para calcular el RFC
+string calcularRFC(string nombre, string apellidoPaterno, string apellidoMaterno, string fechaNacimiento) {
+    string rfc;
+    rfc += apellidoPaterno[0]; // Primera letra del apellido paterno
+    rfc += obtenerPrimeraVocalInterna(apellidoPaterno); // Vocal interna del apellido paterno
+    rfc += apellidoMaterno.empty() ? 'X' : apellidoMaterno[0]; // Primera letra del materno o 'X' si no hay
+    rfc += nombre[0]; // Primera letra del nombre
+    rfc += fechaNacimiento.substr(2, 2); // se optienen los dos dígitos del año
+    rfc += fechaNacimiento.substr(5, 2); //se optiene el mes
+    rfc += fechaNacimiento.substr(8, 2); // se optiene el día
+    return rfc;
+}
+
+int main() {
+    string nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento;
+    cout << "Escribe tu nombre: ";
+    getline(cin, nombre);
+    cout << "Escribe tu apellido paterno: ";
+    getline(cin, apellidoPaterno);
+    cout << "Escribe tu apellido materno (deja vacío si no tienes): ";
+    getline(cin, apellidoMaterno);
+    cout << "Escribe tu fecha de nacimiento (YYYY-MM-DD): ";
+    getline(cin, fechaNacimiento);
+
+    string rfc = calcularRFC(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento);
+    cout << "Tu RFC es: " << rfc << endl;
+
+    return 0;
+}
